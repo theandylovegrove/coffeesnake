@@ -1,4 +1,4 @@
-﻿
+
   BLOCK_SIZE = undefined
   FIELD_HEIGHT = undefined
   FIELD_WIDTH = undefined
@@ -56,22 +56,12 @@
       when 39 then direction = 2
       when 40 then direction = 3
       when 37 then direction = 4
-      when 8 then newGame()
       when 32 then document._GAME_PAUSED = not document._GAME_PAUSED
 
     document.getElementById("score").innerHTML = if document._GAME_PAUSED then "Pause" else snake.score
     document._LAST_KEY = direction
 
-  newGame = ->
-    if document.getElementById("score").innerHTML is "Game over"
-      snake = newsnake()
-      g_place_food snake
-      renderSnake snake, context
-      setTimeout (->
-        startTime = undefined
-        startTime = (new Date()).getTime()
-        animate snake, context, canvas, startTime
-      ), 500
+# Add something here to enable a new game
 
   canvas = document.getElementById("canvas")
   canvas.style.display = "block"
